@@ -1,10 +1,11 @@
 package com.sample.test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.IntStream;
+import java.util.stream.*;
 
 
 
@@ -20,7 +21,8 @@ public class ZalandoTest {
 		Set<Integer> distinctFloors=new HashSet<Integer>();
 		List<Integer> temp=new ArrayList<Integer>();
 		int result=0,pplCount=0,weightCount=0;
-		if(A.length<X && IntStream.of(B).sum()<Y){
+		
+		if(A.length<X &&  Arrays.stream(B).sum()<Y){
 		    for(int i=0;i<B.length;i++){
 		        distinctFloors.add(B[i]);
 		    }
