@@ -1,6 +1,6 @@
 package com.sample.test;
 
-import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class TestRun {
 
@@ -18,6 +18,7 @@ public class TestRun {
 	    if(s.length()>4)
 	    	System.out.println("return "+s);
 	    s2=new StringBuilder(s);
+	    
 	    if(s.replaceAll("[^\\d.]","").length()%3==1)
 	    {
 	    	for(int i=0;i<s.length()-4;i=i+3)

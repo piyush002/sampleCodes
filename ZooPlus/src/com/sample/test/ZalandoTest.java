@@ -1,13 +1,10 @@
 package com.sample.test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.stream.*;
-
-
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ZalandoTest {
 
@@ -15,17 +12,13 @@ public class ZalandoTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		int[]A={60,140,100,100};
-		int[]B={2,1,1,2};
-		int M=5,X=2,Y=200;
+		int[]A={1,1,1,1};
+		int[]B={100,100,100,100};
+		int M=1,X=4,Y=400;
 		Set<Integer> distinctFloors=new HashSet<Integer>();
-		List<Integer> temp=new ArrayList<Integer>();
 		int result=0,pplCount=0,weightCount=0;
-		
-		if(A.length<X &&  Arrays.stream(B).sum()<Y){
-		    for(int i=0;i<B.length;i++){
-		        distinctFloors.add(B[i]);
-		    }
+		if(A.length<=X &&  Arrays.stream(B).sum()<=Y){
+			distinctFloors.addAll(IntStream.of(B).boxed().collect(Collectors.toList()));
 		   // return	distinctFloors.size()+1;
 		    System.out.println(distinctFloors.size()+1);
 		}
@@ -38,21 +31,17 @@ public class ZalandoTest {
 				distinctFloors.add(B[i]);
 				}
 				else{
-					result+=2;
-					pplCount=0;
-					weightCount=0;
-					result+=distinctFloors.size();
+					result+=distinctFloors.size()+1;
+					pplCount=1;
+					weightCount=A[i];
 					distinctFloors.clear();
-					
-					i--;
-					
+					distinctFloors.add(B[i]);
 				}
 				
 			}
-		if(pplCount!=0)
-			result+=distinctFloors.size();
+			result+=distinctFloors.size()+1;
 		System.out.println(result);
-	//	return result;
+		//return result;
 		}
 		
 	}
